@@ -11,6 +11,9 @@ if [[ ! -f $PROSODY_CFG ]]; then
     cp -r /defaults/* /config
     tpl /defaults/conf.d/jitsi-meet.cfg.lua > /config/conf.d/jitsi-meet.cfg.lua
 
+    prosodyctl --config $PROSODY_CFG register $JIBRI_AUTH_USER $XMPP_AUTH_DOMAIN $JIBRI_AUTH_USER_PASSWORD
+    prosodyctl --config $PROSODY_CFG register $JIBRI_AUTH_RECORDER $XMPP_RECORDER_DOMAIN $JIBRI_AUTH_RECORDER_PASSWORD
+
     prosodyctl --config $PROSODY_CFG register $JICOFO_AUTH_USER $XMPP_AUTH_DOMAIN $JICOFO_AUTH_PASSWORD
     prosodyctl --config $PROSODY_CFG register $JVB_AUTH_USER $XMPP_AUTH_DOMAIN $JVB_AUTH_PASSWORD
     prosodyctl --config $PROSODY_CFG register $JIGASI_XMPP_USER $XMPP_AUTH_DOMAIN $JIGASI_XMPP_PASSWORD
